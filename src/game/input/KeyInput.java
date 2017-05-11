@@ -6,8 +6,6 @@ import java.awt.event.KeyListener;
 import mainpkge.Id;
 import mainpkge.MainGame;
 import game.entity.Entity;
-import game.entity.Player;
-import game.tile.*;
 
 public class KeyInput implements KeyListener {
 
@@ -17,15 +15,18 @@ public class KeyInput implements KeyListener {
 		for (Entity en : MainGame.handler.entity) {
 			if (en.getId() == Id.player) {
 				switch (key) {
-				case KeyEvent.VK_SPACE:
-					
-				case KeyEvent.VK_LEFT:
-					en.moveLeft = true;
+				case KeyEvent.VK_W:
+					if (!en.jumping) {
+						en.jumping = true;
+						en.gravity = 10.0;
+					}
+					break;
+				case KeyEvent.VK_A:
+					en.setvX(-5);
 					en.facing = 0;
 					break;
-				case KeyEvent.VK_RIGHT:
-					en.moveRight = true;
-					
+				case KeyEvent.VK_D:
+					en.setvX(5);
 					en.facing = 1;
 					break;
 				}
@@ -40,13 +41,16 @@ public class KeyInput implements KeyListener {
 		for (Entity en : MainGame.handler.entity) {
 			if (en.getId() == Id.player) {
 				switch (key) {
-				case KeyEvent.VK_SPACE:
-				
-				case KeyEvent.VK_RIGHT:
-				en.moveRight = false;
-				
-				case KeyEvent.VK_LEFT:
-				en.moveLeft = false;
+				case KeyEvent.VK_W:
+					if (!en.jumping)
+						en.jumping = true;
+					break;
+				case KeyEvent.VK_A:
+					en.setvX(0);
+					break;
+				case KeyEvent.VK_D:
+					en.setvX(0);
+					break;
 				}
 			}
 		}

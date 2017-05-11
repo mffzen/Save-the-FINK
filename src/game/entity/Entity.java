@@ -3,28 +3,27 @@ package game.entity;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import javax.swing.JPanel;
+
 import mainpkge.Handler;
 import mainpkge.Id;
 import mainpkge.MainGame;
 
-public abstract class Entity {
+public abstract class Entity extends JPanel {
 	
 	public int playerMass = 10;
 	public int x, y;
-	public double dx = 0.2;
-	public double dy = 9.8;
+	public double gravity  = 10.0;
 	
-	public int velocityX, velocityY;
-	public final double dt = 0.1;
-	public final double JANGLE = 45;
-	public double gravity = 9.8;
+	public double dt = 0.16;
+	
+	
+	public int vX, vY;
 	public int width, height;
 	public int facing = 1; // 0 = left and 1 = right
 	
 	public boolean jumping = false;
 	public boolean falling = true;
-	public boolean moveRight = false;
-	public boolean moveLeft = false;
 	
 	public boolean solid;
 	public Id id;
@@ -81,21 +80,21 @@ public abstract class Entity {
 		return solid;
 	}
 
-	public void setVelocityX(int velocityX) {
-		this.velocityX = velocityX;
+	public void setvX(int vX) {
+		this.vX = vX;
 	}
 
 
-	public void setVelocityY(int velocityY) {
-		this.velocityY = velocityY;
+	public void setvY(int vY) {
+		this.vY = vY;
 	}
 	
-	public int getVelocityX() {
-		return velocityX;
+	public int getvX() {
+		return vX;
 	}
 	
-	public int getVelocityY() {
-		return velocityY;
+	public int getvY() {
+		return vY;
 	}
 
 	

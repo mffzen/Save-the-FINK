@@ -1,5 +1,6 @@
 package mainpkge;
 
+import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,6 +19,7 @@ import javax.swing.Timer;
 
 import game.GFX.Sprite;
 import game.GFX.SpriteSheet;
+import game.entity.Dragon;
 import game.entity.Entity;
 import game.entity.Player;
 import game.input.KeyInput;
@@ -56,7 +58,9 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 	public static Sprite keys;
 	public static Sprite cage;
 	public static Sprite player[] = new Sprite[2];
-
+	public static Sprite dragon;
+	public static Sprite ball;
+	
 	public MainGame() {
 
 		Dimension size = new Dimension(WIDTH * SCALE, HEIGHT * SCALE);
@@ -75,9 +79,11 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 		ice = new Sprite(sheet, 3, 1);
 		ground = new Sprite(sheet, 4, 1);
 		player = new Sprite[2];
+		dragon = new Sprite(sheet, 2, 1);
 		keys = new Sprite(sheet, 6, 1);
 		cage = new Sprite(sheet, 7, 1);
-
+		ball = new Sprite(sheet, 3, 1);
+		
 		for (int i = 0; i < player.length; i++) {
 			player[i] = new Sprite(sheet, i + 1, 3);
 		}
@@ -141,7 +147,7 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 			frames++;
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				//System.out.println(frames + " fps " + ticks + " ups");
+				System.out.println(frames + " fps " + ticks + " ups");
 				frames = 0;
 				ticks = 0;
 			}
