@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import game.entity.Dragon;
 import game.entity.Entity;
 import game.entity.Player;
-import game.tile.Ball;
 import game.tile.Cage;
 import game.tile.Ice;
 import game.tile.Keys;
@@ -77,8 +76,6 @@ public class Handler {
 					addTile(new Keys(x * 64, y * 64, 64, 64, true, Id.keys, this));
 				if(red == 0 &&  green == 255 && blue == 0)
 					addTile(new Cage(x * 64, y * 64, 64, 64, true, Id.cage, this));
-				if (red == 255 && green == 0 && blue == 255)
-					addEntity(new Ball(x * 64, y * 64, 64, 64, false, Id.ball, this));
 				if (red == 255 && green == 119 && blue == 0)
 					addEntity(new Dragon(x * 64, y * 64, 64, 64, false, Id.dragon, this));
 				

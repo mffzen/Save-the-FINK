@@ -59,7 +59,6 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 	public static Sprite cage;
 	public static Sprite player[] = new Sprite[2];
 	public static Sprite dragon;
-	public static Sprite ball;
 	
 	public MainGame() {
 
@@ -79,10 +78,9 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 		ice = new Sprite(sheet, 3, 1);
 		ground = new Sprite(sheet, 4, 1);
 		player = new Sprite[2];
-		dragon = new Sprite(sheet, 2, 1);
+		dragon = new Sprite(sheet, 5, 1);
 		keys = new Sprite(sheet, 6, 1);
 		cage = new Sprite(sheet, 7, 1);
-		ball = new Sprite(sheet, 3, 1);
 		
 		for (int i = 0; i < player.length; i++) {
 			player[i] = new Sprite(sheet, i + 1, 3);
@@ -190,14 +188,16 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 				g.setFont(new Font("Courier", Font.BOLD, 200));
 				g.drawString("You have " + lives + " lives", 700, 500);
 				g.setFont(new Font("courier", Font.BOLD, 100));
-				g.drawString("- Collect 8 keys", 1050, 600);
+				g.drawString("- Collect 3 keys", 1050, 600);
 				g.drawString("- Save the fink", 1050, 700);
-				g.drawString("- Watch out for the bear", 1050, 800);
+				g.drawString("- Watch out for the homework", 1050, 800);
 				g.drawString("- Good luck!", 1050, 900);
 			} else {
 				g.setColor(Color.RED);
 				g.setFont(new Font("Courier", Font.BOLD, 200));
 				g.drawString("GAME OVER", 1050, 700);
+				g.setFont(new Font("Courier", Font.BOLD, 100));
+				g.drawString("Go back to your studies!", 850, 900);
 			}
 		}
 		if (gameComplete) {

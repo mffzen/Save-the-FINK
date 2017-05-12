@@ -18,12 +18,12 @@ public abstract class Entity extends JPanel {
 	public double dt = 0.16;
 	
 	
-	public int vX, vY;
+	public double vX, vY, jumpSpeed, jumpingAngle = 45;;
 	public int width, height;
 	public int facing = 1; // 0 = left and 1 = right
 	
 	public boolean jumping = false;
-	public boolean falling = true;
+	public boolean atGround = false;
 	
 	public boolean solid;
 	public Id id;
@@ -89,11 +89,11 @@ public abstract class Entity extends JPanel {
 		this.vY = vY;
 	}
 	
-	public int getvX() {
+	public double getvX() {
 		return vX;
 	}
 	
-	public int getvY() {
+	public double getvY() {
 		return vY;
 	}
 
