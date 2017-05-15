@@ -58,7 +58,6 @@ public abstract class Tile {
 		this.velocityX = velocityX;
 	}
 
-
 	public void setVelocityY(int velocityY) {
 		this.velocityY = velocityY;
 	}
@@ -66,6 +65,5 @@ public abstract class Tile {
 	public Rectangle getBounds(){
 		return new Rectangle(getX(), getY(), width, height);
 	}
-	
 	
 }

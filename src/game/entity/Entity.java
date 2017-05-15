@@ -2,6 +2,7 @@ package game.entity;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
@@ -10,26 +11,24 @@ import mainpkge.Id;
 import mainpkge.MainGame;
 
 public abstract class Entity extends JPanel {
-	
-	public int playerMass = 10;
+
 	public int x, y;
-	public double gravity  = 10.0;
-	
-	public double dt = 0.16;
-	
-	
-	public double vX, vY, jumpSpeed, jumpingAngle = 45;;
-	public int width, height;
+	public float gravity = 10f, time, dt;
+
+	public float vX = 0, vY = 0, vinit = 0;
+	public float jumpAngle = (float) (45 * Math.PI/180);
+	// public float jvX = (float) (jumpSpeed*Math.cos(jumpAngle*(Math.PI/180)));
+	// public float jvY = (float) (jumpSpeed*Math.sin(jumpAngle*(Math.PI/180)));
+	public int width = 64, height = 64;
 	public int facing = 1; // 0 = left and 1 = right
-	
-	public boolean jumping = false;
-	public boolean atGround = false;
-	
+
 	public boolean solid;
+	public boolean falling, jumping, moving;
+	
 	public Id id;
 	public Handler handler;
-	
-	public Entity(int x, int y, int width, int height, boolean solid, Id id, Handler handler){
+
+	public Entity(int x, int y, int width, int height, boolean solid, Id id, Handler handler) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -38,24 +37,25 @@ public abstract class Entity extends JPanel {
 		this.id = id;
 		this.handler = handler;
 	}
-	
+
 	public abstract void render(Graphics g);
+
 	public abstract void tick();
-	
-	public void enemyDie(){
+
+	public void enemyDie() {
 		handler.removeEntity(this);
 	}
 
-	public void die(){
-	handler.removeEntity(this);	
-	MainGame.lives--;
-	MainGame.key= 0;
-	MainGame.showDeathScreen = true;
-	MainGame.time = 103;
-	if(MainGame.lives <=0)
-	MainGame.gameOver = true;
+	public void die() {
+		handler.removeEntity(this);
+		MainGame.lives--;
+		MainGame.key = 0;
+		MainGame.showDeathScreen = true;
+		MainGame.time = 103;
+		if (MainGame.lives <= 0)
+			MainGame.gameOver = true;
 	}
-	
+
 	public int getX() {
 		return x;
 	}
@@ -72,50 +72,47 @@ public abstract class Entity extends JPanel {
 		this.y = y;
 	}
 
-	public Id getId(){
+	public Id getId() {
 		return id;
 	}
-	
+
 	public boolean isSolid() {
 		return solid;
 	}
 
-	public void setvX(int vX) {
+	public void setvX(float vX) {
 		this.vX = vX;
 	}
 
-
-	public void setvY(int vY) {
+	public void setvY(float vY) {
 		this.vY = vY;
 	}
-	
-	public double getvX() {
+
+	public float getvX() {
 		return vX;
 	}
-	
-	public double getvY() {
+
+	public float getvY() {
 		return vY;
 	}
 
-	
-	public Rectangle getBounds(){
+	public Rectangle getBounds() {
 		return new Rectangle(getX(), getY(), width, height);
 	}
-	
-	public Rectangle getBoundsTop(){
-		return new Rectangle(getX()+10, getY(), width-20, 5);
-	}
-	
-	public Rectangle getBoundsBottom(){
-		return new Rectangle(getX()+10, getY()+height-5, width-20, 5);
-	}
-	
-	public Rectangle getBoundsLeft(){
-		return new Rectangle(getX(), getY()+10, 5, height-20);
-	}
-	
-	public Rectangle getBoundsRight(){
-		return new Rectangle(getX()+width-5, getY()+10, 5, height-20);
+
+	public Rectangle getBoundsTop() {
+		return new Rectangle(getX() + 10, getY(), width - 20, 5);
 	}
 
+	public Rectangle getBoundsBottom() {
+		return new Rectangle(getX() + 10, getY() + height - 5, width - 20, 5);
+	}
+
+	public Rectangle getBoundsLeft() {
+		return new Rectangle(getX(), getY() + 10, 5, height - 20);
+	}
+
+	public Rectangle getBoundsRight() {
+		return new Rectangle(getX() + width - 5, getY() + 10, 5, height - 20);
+	}
 }

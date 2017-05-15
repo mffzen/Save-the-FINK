@@ -88,7 +88,7 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 
 		try {
 			image = ImageIO.read(getClass().getResource("/level.png"));
-			background = ImageIO.read(getClass().getResource("/background3.png"));
+			//background = ImageIO.read(getClass().getResource("/background3.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -145,7 +145,7 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 			frames++;
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println(frames + " fps " + ticks + " ups");
+				//System.out.println(frames + " fps " + ticks + " ups");
 				frames = 0;
 				ticks = 0;
 			}
@@ -163,8 +163,8 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 		}
 		Graphics g = bs.getDrawGraphics();
 		g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
-		//g.setColor(new Color(255, 255, 255));
-		//g.fillRect(0, 0, getWidth(), getHeight());
+		g.setColor(new Color(255, 255, 255));
+		g.fillRect(0, 0, getWidth(), getHeight());
 
 		
 		if (!showDeathScreen && !gameComplete) {
@@ -196,8 +196,6 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 				g.setColor(Color.RED);
 				g.setFont(new Font("Courier", Font.BOLD, 200));
 				g.drawString("GAME OVER", 1050, 700);
-				g.setFont(new Font("Courier", Font.BOLD, 100));
-				g.drawString("Go back to your studies!", 850, 900);
 			}
 		}
 		if (gameComplete) {
@@ -211,7 +209,7 @@ public class MainGame extends Canvas implements Runnable, ActionListener {
 			g.setFont(new Font("Courier", Font.BOLD, 200));
 			g.drawString("GAME OVER", 1050, 700);
 			g.setFont(new Font("Courier", Font.BOLD, 100));
-			g.drawString("Time out or you died to many times", 600, 850);
+			g.drawString("Time out or you have too much homework", 600, 850);
 			
 		}
 		if (!showDeathScreen)

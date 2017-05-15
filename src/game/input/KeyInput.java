@@ -15,16 +15,21 @@ public class KeyInput implements KeyListener {
 		for (Entity en : MainGame.handler.entity) {
 			if (en.getId() == Id.player) {
 				switch (key) {
-				case KeyEvent.VK_W:
+				case KeyEvent.VK_W:					
+					// VAD SKA HÄNDA OM JAG HOPPAR?
+					
 					break;
 				case KeyEvent.VK_A:
-					en.setvX(-5);
-					en.facing = 0;
+					// VAD SKA HÄNDA OM JAG TRYCKER A?
+					en.facing =0;
+					en.vX = -5;
 					break;
 				case KeyEvent.VK_D:
-					en.setvX(5);
+					// VAD SKA HÄNDA OM JAG TRYCKER D
 					en.facing = 1;
+					en.vX = 5;
 					break;
+				
 				}
 			}
 		}
@@ -38,12 +43,15 @@ public class KeyInput implements KeyListener {
 			if (en.getId() == Id.player) {
 				switch (key) {
 				case KeyEvent.VK_W:
+					//VAD SKA HÄNDA OM JAG SLÄPPER HOPP-KNAPPEN?
 					break;
 				case KeyEvent.VK_A:
-					en.setvX(0);
+					// VAD SKA HÄNDA OM JAG SLÄPPER A?
+					en.vX = 0;
 					break;
 				case KeyEvent.VK_D:
-					en.setvX(0);
+					// VAD SKA HÄNDA OM JAG SLÄPPER D?
+					en.vX = 0;
 					break;
 				}
 			}

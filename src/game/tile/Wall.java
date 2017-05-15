@@ -2,6 +2,7 @@ package game.tile;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import mainpkge.Handler;
 import mainpkge.Id;

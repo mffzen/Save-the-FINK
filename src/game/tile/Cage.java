@@ -1,6 +1,8 @@
 package game.tile;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import mainpkge.Handler;
 import mainpkge.Id;
@@ -15,7 +17,6 @@ public class Cage extends Tile {
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(MainGame.cage.getBufferedImage(), x, y, width, height, null);
-	
 	}
 
 	@Override
